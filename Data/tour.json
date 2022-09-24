@@ -1,0 +1,73 @@
+[
+
+    {
+        "name": "Amazon Travel",
+        "duration": "5 days",
+        "price": 136,
+        "place": "Amazon",
+        "status": "available"
+    },
+    {
+        "name": "Italia Travel",
+        "duration": "3 days",
+        "price": 250,
+        "place": "Venice, Italy",
+        "status": "available"
+    },
+    {
+        "name": "Madrid Travel",
+        "duration": "5 days",
+        "price": 200,
+        "place": "Madrid, Spain",
+        "status": "not-available"
+    },
+    {
+        "name": "The Secret Hike of Ice Cave",
+        "duration": "2 days",
+        "price": 100,
+        "place": "Amsterdram, Netherlands",
+        "status": "available"
+    },
+    {
+        "name": "Real Paradise",
+        "duration": "4 days",
+        "price": 200,
+        "place": "Madrid, Spain",
+        "status": "not-available"
+    },
+    {
+        "name": "Venice",
+        "duration": "5 days",
+        "price": 250,
+        "place": "Venice, Italy",
+        "status": "available"
+    },
+    {
+        "name": "The longest Sea Beach in The World",
+        "duration": "3 days",
+        "price": 180,
+        "place": "Cox's Bazar, Bangladesh",
+        "status": "available"
+    },
+    {
+        "name": "Nilgiri",
+        "duration": "5 days",
+        "price": 200,
+        "place": "Bandorban, Bangladesh",
+        "status": "available"
+    },
+    {
+        "name": "Darjiling",
+        "duration": "4 days",
+        "price": 220,
+        "place": "India",
+        "status": "available"
+    },
+    {
+        "name": "The Great Wall",
+        "duration": "3 days",
+        "price": 280,
+        "place": "China",
+        "status": "discontinued"
+    }
+]
