@@ -10,7 +10,7 @@ const tourSchema = mongoose.Schema({
         maxLength: [100, "Name is too large"]
     },
     duration: {
-        type: String,
+        type: Number,
         required: true
     },
     price: {
@@ -33,14 +33,14 @@ const tourSchema = mongoose.Schema({
 }, {
     timestamps: true
 })
-tourSchema.pre('save', function(next){
+/* tourSchema.pre('save', function(next){
     console.log(' Before saving data');
 
     next();
 })
 tourSchema.methods.logger = function(){
     console.log(`Data is saved for ${this.name}`)
-}
+} */
 const Tour = mongoose.model("Tour", tourSchema)
 
 module.exports = Tour;

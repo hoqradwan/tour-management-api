@@ -1,4 +1,4 @@
-const { getToursService, createTourService, deleteTourByIdService, getTourByIdService } = require("../services/tour.services");
+const { getToursService, createTourService, deleteTourByIdService, getTourByIdService, updateTourByIdService, getCheapestTourService, getTrendingTourService } = require("../services/tour.services");
 
 exports.getTours = async (req, res, next) => {
   try {
@@ -112,6 +112,7 @@ const {id} = req.params;
 };
 exports.getTourById = async (req, res, next) => {
   try {
+    // res.send("tour details found")
 const {id} = req.params;
     const result = await getTourByIdService(id);
 
@@ -123,6 +124,55 @@ const {id} = req.params;
     res.status(400).json({
       status: "fail",
       message: "Can't get the tour",
+      error: error.message,
+    });
+  }
+};
+exports.updateTourById = async (req, res, next) => {
+  try {
+const {id} = req.params;
+    const result = await updateTourByIdService(id,req.body);
+
+    res.status(200).json({
+      status: "success",
+      message: "Successfully updated the tour",
+      data: result
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: "Couldn't update the tour",
+      error: error.message,
+    });
+  }
+};
+exports.getTrendingTour = async (req, res, next) => {
+  try {
+    const trendingTours = await getTrendingTourService();
+
+    res.status(200).json({
+      status: "success",
+      data: trendingTours
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: "Couldn't find trending tours",
+      error: error.message,
+    });
+  }
+};
+exports.getCheapestTour = async (req, res, next) => {
+  try {
+    const cheapestTours = await getCheapestTourService();
+    res.status(200).json({
+      status: "success",
+      data: cheapestTours
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message:"Couldn't find cheapest tours",
       error: error.message,
     });
   }
