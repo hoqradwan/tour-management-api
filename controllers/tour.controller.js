@@ -10,10 +10,6 @@ const {
 
 exports.getTours = async (req, res, next) => {
   try {
-    //{price:{$ gt:50}
-
-    //  { price: { gt: '100' } }
-    console.log(req.query);
     let filters = { ...req.query };
     const excludeFields = ["sort", "page", "limit"];
     excludeFields.forEach((field) => delete filters[field]);
@@ -31,7 +27,13 @@ exports.getTours = async (req, res, next) => {
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;
-      console.log(fields);
+    }
+
+    if(req.query.page){
+      const {page=1, limit=2} = req.query;
+      const skip = (page -1)*parseInt(limit)
+      queries.skip = skip;
+      queries.limit = parseInt(limit)
     }
 
     const tours = await getToursService(filters, queries);
