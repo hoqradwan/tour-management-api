@@ -48,8 +48,22 @@ exports.getTours = async (req, res, next) => {
         queries.limit=parseInt(limit);
   
        } */
+const filters = {...req.query};
+const excludeFields = ['sort', 'page', 'limit']
+excludeFields.forEach(field => delete filters[field])
+ 
+const queries = {}
+if(req.query.sort){
+  const sortBy = req.query.sort.split(',').join(' ');
+  queries.sortBy = sortBy;
+}
+if(req.query.fields){
+  const fields = req.query.fields.split(',').join(' ');
+  queries.fields = fields;
+  console.log(fields)
+}
 
-    const tours = await getToursService();
+    const tours = await getToursService(filters, queries);
 
     res.status(200).json({
       status: "success",

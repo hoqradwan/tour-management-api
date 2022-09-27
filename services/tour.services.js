@@ -1,7 +1,7 @@
 const Tour = require("../models/Tour.js");
 
-exports.getToursService = async () => {
-  const tours = await Tour.find({});
+exports.getToursService = async (filters, queries) => {
+  const tours = await Tour.find({}).select(queries.fields).sort(queries.sortBy);
   return tours;
 };
 exports.createTourService = async (data) => {
@@ -26,11 +26,11 @@ exports.updateTourByIdService = async (tourId, data) => {
   return result;
 };
 exports.getTrendingTourService = async () => {
-  const tours = await Tour.find({})
+  const tours = await Tour.find({});
   return tours;
 };
 exports.getCheapestTourService = async () => {
-  const tour = await Tour.find({}).sort({ price: 1 })
-  const cheapestTours = tour.slice(0,3)
+  const tour = await Tour.find({}).sort({ price: 1 });
+  const cheapestTours = tour.slice(0, 3);
   return cheapestTours;
 };
